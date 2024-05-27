@@ -6,9 +6,10 @@
         android:icon="@drawable/ic_home"
         android:title="Beranda" />
     <item
+        android:enabled="false"
         android:title="" />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_users_foreground"
-        android:title="@string/profile" />
+        android:icon="@drawable/baseline_person_24"
+        android:title="Akun" />
 </menu>
