@@ -7,7 +7,7 @@ import com.application.snapcal.data.pref.UserPreference
 import com.application.snapcal.data.pref.dataStore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-
+// Tes
 object Injection {
     fun provideRepository(context: Context): Repository {
         val pref = UserPreference.getInstance(context.dataStore)
