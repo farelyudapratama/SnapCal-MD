@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/imgbg_regis"
+    tools:context=".view.signUp.ActSignUp">
+
+  <TextView
+      android:id="@+id/titleText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Pendaftaran Akun"
+      android:textSize="24sp"
+      android:textStyle="bold"
+      android:textColor="@android:color/white"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"/>
+
+  <androidx.cardview.widget.CardView
+      android:id="@+id/cardSignup"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:cardCornerRadius="28dp"
+      android:layout_marginBottom="-28dp"
+      app:cardBackgroundColor="@color/light_blue"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="25dp"
+        android:layout_marginBottom="20dp">
+
+    <TextView
+          android:id="@+id/titleSignup"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="15dp"
+          android:text="Pendaftaran"
+          android:textColor="@color/navy_blue"
+          android:textSize="18sp"
+          android:textStyle="bold" />
+
+      <com.google.android.material.textfield.TextInputLayout
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:boxBackgroundColor="@color/white"
+          app:boxCornerRadiusBottomEnd="20dp"
+          app:boxCornerRadiusBottomStart="20dp"
+          app:boxCornerRadiusTopEnd="20dp"
+          app:boxCornerRadiusTopStart="20dp"
+          android:layout_marginBottom="10dp">
+        <EditText
+            android:id="@+id/userSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama*"
+            android:drawableStart="@drawable/ic_users_foreground"
+            android:drawablePadding="10dp"
+            android:textSize="22sp"
+            android:padding="2dp"
+            android:textColor="@color/navy_blue"
+            android:textColorHint="@color/navy_blue" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:boxBackgroundColor="@color/white"
+          app:boxCornerRadiusBottomEnd="20dp"
+          app:boxCornerRadiusBottomStart="20dp"
+          app:boxCornerRadiusTopEnd="20dp"
+          app:boxCornerRadiusTopStart="20dp"
+          android:layout_marginBottom="10dp">
+        <EditText
+            android:id="@+id/emailSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email*"
+            android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/ic_email_foreground"
+            android:drawablePadding="10dp"
+            android:textSize="22sp"
+            android:padding="2dp"
+            android:textColor="@color/navy_blue"
+            android:textColorHint="@color/navy_blue" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:boxBackgroundColor="@color/white"
+          app:boxCornerRadiusBottomEnd="20dp"
+          app:boxCornerRadiusBottomStart="20dp"
+          app:boxCornerRadiusTopEnd="20dp"
+          app:boxCornerRadiusTopStart="20dp"
+          android:layout_marginBottom="10dp"
+          app:endIconMode="password_toggle">
+        <EditText
+            android:id="@+id/passSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Kata Sandi*"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/ic_keypass_foreground"
+            android:drawablePadding="10dp"
+            android:textSize="22sp"
+            android:padding="2dp"
+            android:textColor="@color/navy_blue"
+            android:textColorHint="@color/navy_blue" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <Button
+          android:id="@+id/btnSignup"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="16dp"
+          android:backgroundTint="@color/golden_yellow"
+          android:text="DAFTAR"
+          android:textSize="16sp"
+          android:textColor="@color/navy_blue"
+          android:textStyle="bold"/>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:gravity="end">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:text="Sudah Memiliki Akun? "
+            android:textColor="@color/navy_blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="Masuk"
+            android:textColor="@color/navy_blue" />
+      </LinearLayout>
+    </LinearLayout>
+  </androidx.cardview.widget.CardView>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
