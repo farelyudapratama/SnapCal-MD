@@ -6,8 +6,11 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.application.snapcal.R
 import com.application.snapcal.databinding.ActivityMainBinding
+import com.application.snapcal.view.HomeFragment
+import com.application.snapcal.view.ProfileFragment
 import com.application.snapcal.view.ViewModelFactory
 import com.application.snapcal.view.login.ActLogin
 
@@ -21,20 +24,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupAction()
         setupBottomNavigation()
-
+        if (savedInstanceState == null) {
+            binding.bottomNavigationView.selectedItemId = R.id.home
+        }
     }
 
     private fun setupBottomNavigation() {
         binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                    loadFragment(HomeFragment())
                     true
                 }
                 R.id.profile -> {
-                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show()
+                    loadFragment(ProfileFragment())
                     true
                 }
                 else -> false
@@ -44,11 +48,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "CameraX", Toast.LENGTH_SHORT).show()
         }
     }
-    private fun setupAction() {
-        binding.btnLogout.setOnClickListener {
-            viewModel.logout()
-            startActivity(Intent(this, ActLogin::class.java))
-            finish()
-        }
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
     }
 }
