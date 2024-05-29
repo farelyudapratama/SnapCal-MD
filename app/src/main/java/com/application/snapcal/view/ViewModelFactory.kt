@@ -7,6 +7,7 @@ import com.application.snapcal.data.Repository
 import com.application.snapcal.di.Injection
 import com.application.snapcal.view.login.LoginViewModel
 import com.application.snapcal.view.main.MainViewModel
+import com.application.snapcal.view.profileFragment.ProfileViewModel
 import com.application.snapcal.view.signUp.SignUpViewModel
 import com.application.snapcal.view.splash.SplashViewModel
 
@@ -26,6 +27,9 @@ class ViewModelFactory(private val repository: Repository) :
                 }
                 modelClass.isAssignableFrom(SplashViewModel::class.java) -> {
                     SplashViewModel(repository) as T
+                }
+                modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                    ProfileViewModel(repository) as T
                 }
                 else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
             }
