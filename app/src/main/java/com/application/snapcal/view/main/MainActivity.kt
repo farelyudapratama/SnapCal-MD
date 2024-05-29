@@ -1,8 +1,6 @@
 package com.application.snapcal.view.main
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +8,8 @@ import androidx.fragment.app.Fragment
 import com.application.snapcal.R
 import com.application.snapcal.databinding.ActivityMainBinding
 import com.application.snapcal.view.HomeFragment
-import com.application.snapcal.view.ProfileFragment
+import com.application.snapcal.view.profileFragment.ProfileFragment
 import com.application.snapcal.view.ViewModelFactory
-import com.application.snapcal.view.login.ActLogin
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
