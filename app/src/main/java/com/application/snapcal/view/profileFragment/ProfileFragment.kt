@@ -7,6 +7,7 @@ import android.view.View
 import com.application.snapcal.R
 import com.application.snapcal.databinding.FragmentProfileBinding
 import com.application.snapcal.view.EditProfileActivity
+import com.application.snapcal.view.GantiKataSandiActivity
 import com.application.snapcal.view.login.ActLogin
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -25,7 +26,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             startActivity(Intent(requireContext(), EditProfileActivity::class.java))
         }
         _binding.tvGantiKataSandi.setOnClickListener {
-
+            startActivity(Intent(requireContext(), GantiKataSandiActivity::class.java))
         }
 
         _binding.tvHapusAkun.setOnClickListener {

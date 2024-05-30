@@ -3,6 +3,7 @@
     <string name="profile">Akun\n</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="perbarui_kata_sandi_explaine">Perbarui kata sandi akun Anda untuk menjaga keamanan dan akses yang aman. Masukkan kata sandi lama, pilih kata sandi baru yang kuat, dan konfirmasikan kata sandi baru Anda. Tekan <b>\"Simpan\"</b> untuk menyelesaikan proses.</string>
     <string-array name="gender_array">
         <item>Laki - Laki</item>
         <item>Perempuan</item>
