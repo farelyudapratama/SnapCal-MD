@@ -64,4 +64,8 @@ dependencies {
     // LiveData and ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
+
+    val fragmentVersion = "1.7.1"
+    implementation("androidx.fragment:fragment:$fragmentVersion")
+    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
 }
