@@ -4,7 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="perbarui_kata_sandi_explaine">Perbarui kata sandi akun Anda untuk menjaga keamanan dan akses yang aman. Masukkan kata sandi lama, pilih kata sandi baru yang kuat, dan konfirmasikan kata sandi baru Anda. Tekan <b>\"Simpan\"</b> untuk menyelesaikan proses.</string>
-    <string name="desc_app">SnapCal adalah aplikasi penghitung kalori.\n\nAnda dapat melakukan scan ke makanan dan melihat kalori dari makanan tersebut</string>
+    <string name="desc_app">Selamat Datang di SnapCal. Hitung kalori Anda dengan mudah dan cepat untuk hidup lebih sehat.</string>
+    <string name="item_title">Item Title</string>
     <string-array name="gender_array">
         <item>Laki - Laki</item>
         <item>Perempuan</item>

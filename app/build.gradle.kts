@@ -53,6 +53,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // Using Cardview for MaterialButton
+    implementation ("androidx.cardview:cardview:1.0.0")
+
     // Using Datastore Preferences
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
