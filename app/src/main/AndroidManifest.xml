@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -20,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SnapCal"
         tools:targetApi="31">
+        <activity
+            android:name=".view.resultCalory.ResultActivity"
+            android:exported="false" />
         <activity
             android:name=".view.cameraX.CameraXActivity"
             android:exported="false" />

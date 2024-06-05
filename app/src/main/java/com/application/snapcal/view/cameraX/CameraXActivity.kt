@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.CameraControl
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -25,9 +26,9 @@ class CameraXActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraXactivityBinding
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private var imageCapture: ImageCapture? = null
-
+    private var isFlashOn = false
     private var uri: Uri? = null
-
+    private lateinit var cameraControl: CameraControl
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
         if (imageUri != null) {
 //            analyzeImage(uriToFile(imageUri))
@@ -70,6 +71,7 @@ class CameraXActivity : AppCompatActivity() {
         }
         binding.captureImage.setOnClickListener { takePhoto() }
         binding.openGallery.setOnClickListener { startGallery() }
+        binding.flashLight.setOnClickListener { toggleFlash() }
     }
 
     //    CAMERA
@@ -88,12 +90,13 @@ class CameraXActivity : AppCompatActivity() {
 
             try {
                 cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(
+                val camera = cameraProvider.bindToLifecycle(
                     this,
                     cameraSelector,
                     preview,
                     imageCapture
                 )
+                cameraControl = camera.cameraControl
 
             } catch (exc: Exception) {
                 Toast.makeText(
@@ -139,6 +142,18 @@ class CameraXActivity : AppCompatActivity() {
 //    GALLERY
     private fun startGallery() {
         pickImage.launch("image/*")
+    }
+
+    //    FLASH
+    private fun toggleFlash() {
+        isFlashOn = !isFlashOn
+        cameraControl.enableTorch(isFlashOn)
+
+        if (isFlashOn) {
+            binding.flashLight.setImageResource(R.drawable.baseline_flashlight_on_24)
+        } else {
+            binding.flashLight.setImageResource(R.drawable.baseline_flashlight_off_24)
+        }
     }
 
     companion object {
