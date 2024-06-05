@@ -12,6 +12,7 @@ import com.application.snapcal.view.CalculatorActivity
 import com.application.snapcal.view.HomeFragment
 import com.application.snapcal.view.profileFragment.ProfileFragment
 import com.application.snapcal.view.ViewModelFactory
+import com.application.snapcal.view.cameraX.CameraXActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -49,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.fabCameraX.setOnClickListener {
+            val intent = Intent(this, CameraXActivity::class.java)
+            startActivity(intent)
             Toast.makeText(this, "CameraX", Toast.LENGTH_SHORT).show()
         }
     }
