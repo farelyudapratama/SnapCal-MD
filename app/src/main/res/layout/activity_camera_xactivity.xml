@@ -39,6 +39,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="26dp"
+        app:cardBackgroundColor="#CCCCCC"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/captureImage"
@@ -55,9 +56,11 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/flashlightBox"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="26dp"
+        app:cardBackgroundColor="#CCCCCC"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
