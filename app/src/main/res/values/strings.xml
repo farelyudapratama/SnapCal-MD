@@ -6,6 +6,16 @@
     <string name="perbarui_kata_sandi_explaine">Perbarui kata sandi akun Anda untuk menjaga keamanan dan akses yang aman. Masukkan kata sandi lama, pilih kata sandi baru yang kuat, dan konfirmasikan kata sandi baru Anda. Tekan <b>\"Simpan\"</b> untuk menyelesaikan proses.</string>
     <string name="desc_app">Selamat Datang di SnapCal. Hitung kalori Anda dengan mudah dan cepat untuk hidup lebih sehat.</string>
     <string name="item_title">Item Title</string>
+    <string name="motivated_text">Ayo mulai sekarang!</string>
+    <string name="kalkulator_text">Kalkulator Asupan Kalori</string>
+    <string name="scan_historytext">Riwayat Scan</string>
+    <string name="about_apps">Tentang SnapCal</string>
+    <string name="pass_autofill_text">Kata Sandi*</string>
+    <string name="button_text">MASUK</string>
+    <string name="signup_directed_text">Daftar</string>
+    <string name="desc_below_text">Belum Memiliki Akun?</string>
+    <string name="email_autofill_text">Email*</string>
+    <string name="sub_viewcard_text">Masuk</string>
     <string-array name="gender_array">
         <item>Laki - Laki</item>
         <item>Perempuan</item>
