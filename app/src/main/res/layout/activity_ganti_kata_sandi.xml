@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".view.GantiKataSandiActivity">
 
     <LinearLayout
@@ -16,9 +17,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="30dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="@color/lavender_blue">
+            android:backgroundTint="@color/lavender_blue"
+            app:cardCornerRadius="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -69,6 +70,7 @@
                         android:textColor="@color/navy_blue" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,6 +104,7 @@
                         android:textColor="@color/navy_blue" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -135,6 +138,7 @@
                         android:textColor="@color/navy_blue" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -157,10 +161,10 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#E83B3B"
                 android:text="Batal"
+                android:textSize="18sp"
                 app:icon="@drawable/ic_cancel"
                 app:iconGravity="start"
                 app:iconSize="25dp"
-                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -171,10 +175,10 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#21A624"
                 android:text="Simpan"
+                android:textSize="18sp"
                 app:icon="@drawable/ic_check"
                 app:iconGravity="start"
                 app:iconSize="25dp"
-                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

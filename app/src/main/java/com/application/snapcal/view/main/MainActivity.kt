@@ -8,11 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.application.snapcal.R
 import com.application.snapcal.databinding.ActivityMainBinding
-import com.application.snapcal.view.CalculatorActivity
 import com.application.snapcal.view.HomeFragment
-import com.application.snapcal.view.profileFragment.ProfileFragment
 import com.application.snapcal.view.ViewModelFactory
 import com.application.snapcal.view.cameraX.CameraXActivity
+import com.application.snapcal.view.profileFragment.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -23,11 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.calculatorCard.setOnClickListener {
-            val intent = Intent(this, CalculatorActivity::class.java)
-            startActivity(intent)
-        }
 
         setupBottomNavigation()
         if (savedInstanceState == null) {

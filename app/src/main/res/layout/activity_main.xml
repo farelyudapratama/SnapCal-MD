@@ -5,13 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_home"
     tools:context=".view.main.MainActivity">
+
+    <FrameLayout
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="70dp"
         android:layout_gravity="bottom"
         android:background="@color/white"
         app:fabAlignmentMode="center"
@@ -28,8 +32,8 @@
         android:contentDescription="Scan"
         android:src="@drawable/ic_scan"
         app:layout_anchor="@id/bottomAppBar"
-        app:fabCustomSize="75dp"
-        app:maxImageSize="45dp"
+        app:fabCustomSize="65dp"
+        app:maxImageSize="40dp"
         tools:ignore="HardcodedText" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        app:itemIconSize="50dp"
+        app:itemIconSize="45dp"
         app:labelVisibilityMode="labeled"
         app:layout_anchor="@+id/bottomAppBar"
         app:layout_anchorGravity="center"

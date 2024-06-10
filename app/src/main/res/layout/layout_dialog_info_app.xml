@@ -27,15 +27,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about_apps"
+                android:textColor="@color/navy_blue"
                 android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="@string/desc_app"/>
+                android:text="@string/desc_app"
+                android:textColor="@color/navy_blue"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
