@@ -23,7 +23,7 @@ class ApiConfig {
 //        }
 
     companion object {
-        private const val BASE_URL = "https://664cbdccede9a2b556516da0.mockapi.io/api/v1/"
+        private const val BASE_URL = "https://snapcal-backend.et.r.appspot.com/"
         internal var token = ""
         fun getApiService(token: String): ApiService{
             val loggingInterceptor =
