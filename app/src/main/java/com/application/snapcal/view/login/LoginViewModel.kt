@@ -14,12 +14,15 @@ class LoginViewModel(private val repository: Repository) : ViewModel() {
     private val _loginResult = MutableLiveData<ResultState<LoginResponse>>()
     val loginResult: LiveData<ResultState<LoginResponse>> get() = _loginResult
 
-    fun login(email:String, password:String){
-        _loginResult.value = ResultState.Loading
-
+    fun login(email: String, password: String) {
         viewModelScope.launch {
-            val result = repository.login(email, password)
-            _loginResult.value = result
+            _loginResult.value = ResultState.Loading
+            try {
+                val result = repository.login(email, password)
+                _loginResult.value = result
+            } catch (e: Exception) {
+                _loginResult.value = ResultState.Error(e.toString())
+            }
         }
     }
 

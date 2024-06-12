@@ -25,9 +25,6 @@
             android:name=".view.main.CalculatorActivity"
             android:exported="false" />
         <activity
-            android:name=".view.CalculatorActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.resultCalory.ResultActivity"
             android:exported="false" />
         <activity
