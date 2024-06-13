@@ -18,6 +18,7 @@ import com.application.snapcal.view.cameraX.createCustomTempFile
 import com.application.snapcal.view.cameraX.reduceFileImage
 import com.application.snapcal.view.cameraX.uriToFile
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import java.io.File
 import java.io.FileOutputStream
 import java.net.URL
@@ -107,6 +108,7 @@ class EditProfileActivity : AppCompatActivity() {
                 uri = imageUri
                 Glide.with(this)
                     .load(uri)
+                    .apply(RequestOptions.circleCropTransform())
                     .into(binding.ivAvatar)
             }
             Log.d("Image URI", "Selected image URI: $imageUri")
