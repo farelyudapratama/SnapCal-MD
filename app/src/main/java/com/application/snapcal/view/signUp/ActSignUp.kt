@@ -39,7 +39,7 @@ class ActSignUp : AppCompatActivity() {
         viewModel.signUpResult.observe(this) { result ->
             when (result) {
                 is ResultState.Loading -> {
-                    // Menampilkan indikator loading jika diperlukan
+                    // Tampilkan loading indicator
                 }
 
                 is ResultState.Success -> {

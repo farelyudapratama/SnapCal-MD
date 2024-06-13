@@ -2,14 +2,11 @@ package com.application.snapcal.view.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.application.snapcal.data.ResultState
-import com.application.snapcal.data.api.ApiService
-import com.application.snapcal.data.pref.UserModel
 import com.application.snapcal.data.response.LoginResponse
 import com.application.snapcal.databinding.ActivityActLoginBinding
 import com.application.snapcal.view.ViewModelFactory
@@ -40,7 +37,7 @@ class ActLogin : AppCompatActivity() {
             viewModel.loginResult.observe(this){ result ->
                 when(result){
                     is ResultState.Loading -> {
-
+                        // Tampilkan loading indicator
                     }
                     is ResultState.Success -> {
                         AlertDialog.Builder(this).apply {

@@ -1,15 +1,18 @@
 package com.application.snapcal.data.api
 
-import com.application.snapcal.data.response.ApiResponse
 import com.application.snapcal.data.response.LoginRequest
 import com.application.snapcal.data.response.LoginResponse
 import com.application.snapcal.data.response.RegisterRequest
 import com.application.snapcal.data.response.RegisterResponse
+import com.application.snapcal.data.response.ResponseProfile
+import com.application.snapcal.data.response.UploadResponse
+import okhttp3.MultipartBody
 import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
+import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Part
 
 
 interface ApiService {
@@ -18,6 +21,18 @@ interface ApiService {
 
     @POST("auth/login")
     suspend fun login(@Body request: LoginRequest): LoginResponse
-    @POST("logout")
-    suspend fun logout(@Header("Authorization") token: String): ApiResponse
+
+//    @POST("logout")
+//    suspend fun logout(@Header("Authorization") token: String): ApiResponse
+
+    // Profile detail API
+    @GET("user/profile-details")
+    suspend fun getProfileDetails(): ResponseProfile
+
+    @PUT( "user/profile-details")
+    suspend fun updateProfileDetails(@Body request: ResponseProfile): ResponseProfile
+
+    @Multipart
+    @POST("user/profile-details/upload-photo")
+    suspend fun uploadProfilePhoto( @Part("photo") file: MultipartBody.Part ): UploadResponse
 }

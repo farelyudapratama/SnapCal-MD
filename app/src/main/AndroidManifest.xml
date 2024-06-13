@@ -34,7 +34,7 @@
             android:name=".view.GantiKataSandiActivity"
             android:exported="false" />
         <activity
-            android:name=".view.EditProfileActivity"
+            android:name=".view.editProfile.EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".view.login.ActLogin"
