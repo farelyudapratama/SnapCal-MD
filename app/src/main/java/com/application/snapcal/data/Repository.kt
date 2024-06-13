@@ -5,10 +5,13 @@ import com.application.snapcal.data.api.ApiConfig
 import com.application.snapcal.data.api.ApiService
 import com.application.snapcal.data.pref.UserModel
 import com.application.snapcal.data.pref.UserPreference
+import com.application.snapcal.data.response.DeleteAkun
 import com.application.snapcal.data.response.LoginRequest
 import com.application.snapcal.data.response.LoginResponse
 import com.application.snapcal.data.response.RegisterRequest
 import com.application.snapcal.data.response.RegisterResponse
+import com.application.snapcal.data.response.ResetPassRequest
+import com.application.snapcal.data.response.ResetPassResponse
 import com.application.snapcal.data.response.ResponseProfile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
@@ -97,6 +100,39 @@ class Repository private constructor(
             emit(ResultState.Success(response))
         } catch (e: Exception) {
             emit(ResultState.Error(e.toString()))
+        }
+    }
+
+    suspend fun resetPassword(newPassword: String): ResultState<ResetPassResponse> {
+        return try {
+            val request = ResetPassRequest(newPassword)
+            val response = apiService.resetPassword(request)
+            ResultState.Success(response)
+        } catch (e: Exception) {
+            ResultState.Error(e.toString())
+        }
+    }
+
+    suspend fun logoutUser(): ResultState<DeleteAkun>{
+        ResultState.Loading
+        return try {
+            val response = apiService.logout()
+            userPreference.logout()
+            ResultState.Success(response)
+        } catch (e: Exception) {
+            ResultState.Error(e.toString())
+        }
+    }
+
+
+    suspend fun deleteAkun(): ResultState<DeleteAkun>{
+        ResultState.Loading
+        return try {
+            val response = apiService.deleteAccount()
+            userPreference.logout()
+            ResultState.Success(response)
+        } catch (e: Exception) {
+            ResultState.Error(e.toString())
         }
     }
 

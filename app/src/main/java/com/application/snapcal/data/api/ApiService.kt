@@ -1,13 +1,17 @@
 package com.application.snapcal.data.api
 
+import com.application.snapcal.data.response.DeleteAkun
 import com.application.snapcal.data.response.LoginRequest
 import com.application.snapcal.data.response.LoginResponse
 import com.application.snapcal.data.response.RegisterRequest
 import com.application.snapcal.data.response.RegisterResponse
+import com.application.snapcal.data.response.ResetPassRequest
+import com.application.snapcal.data.response.ResetPassResponse
 import com.application.snapcal.data.response.ResponseProfile
 import com.application.snapcal.data.response.UploadResponse
 import okhttp3.MultipartBody
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -35,4 +39,14 @@ interface ApiService {
     @Multipart
     @POST("user/profile-details/upload-photo")
     suspend fun uploadProfilePhoto( @Part("photo") file: MultipartBody.Part ): UploadResponse
+
+    @PUT("auth/reset-password")
+    suspend fun resetPassword(@Body request: ResetPassRequest): ResetPassResponse
+
+    @POST("auth/logout")
+    suspend fun logout(): DeleteAkun
+
+    @DELETE("auth/delete-account")
+    suspend fun deleteAccount(): DeleteAkun
+
 }

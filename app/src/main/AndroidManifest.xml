@@ -31,7 +31,7 @@
             android:name=".view.cameraX.CameraXActivity"
             android:exported="false" />
         <activity
-            android:name=".view.GantiKataSandiActivity"
+            android:name=".view.gantiKataSandi.GantiKataSandiActivity"
             android:exported="false" />
         <activity
             android:name=".view.editProfile.EditProfileActivity"

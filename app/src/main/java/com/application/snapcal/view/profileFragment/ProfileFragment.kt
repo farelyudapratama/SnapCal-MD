@@ -1,5 +1,6 @@
 package com.application.snapcal.view.profileFragment
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
@@ -15,9 +16,9 @@ import androidx.fragment.app.viewModels
 import com.application.snapcal.R
 import com.application.snapcal.data.ResultState
 import com.application.snapcal.databinding.FragmentProfileBinding
-import com.application.snapcal.view.GantiKataSandiActivity
 import com.application.snapcal.view.ViewModelFactory
 import com.application.snapcal.view.editProfile.EditProfileActivity
+import com.application.snapcal.view.gantiKataSandi.GantiKataSandiActivity
 import com.application.snapcal.view.login.ActLogin
 import com.bumptech.glide.Glide
 
@@ -65,7 +66,35 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         _binding.tvHapusAkun.setOnClickListener {
+            viewModel.deleteAccountResult.observe(viewLifecycleOwner) { result ->
+                when (result) {
+                    is ResultState.Loading -> {
+                        // Tampilkan loading indicator
+                    }
 
+                    is ResultState.Success -> {
+                        val message = result.data.message
+                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(requireContext(), ActLogin::class.java))
+                    }
+                    is ResultState.Error -> {
+                        Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            AlertDialog.Builder(requireContext()).apply {
+                setTitle("Hapus Akun")
+                setMessage("Apakah Anda yakin ingin menghapus akun?")
+                setPositiveButton("Ya") { _, _ ->
+                    viewModel.deleteAccount()
+                }
+                setNegativeButton("Tidak") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                create()
+                show()
+            }
         }
 
         _binding.tvTentangAplikasi.setOnClickListener {
@@ -84,8 +113,35 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         _binding.btnKeluar.setOnClickListener {
-            viewModel.logout()
-            startActivity(Intent(requireContext(), ActLogin::class.java))
+            viewModel.logOutResult.observe(viewLifecycleOwner) { result ->
+                when (result) {
+                    is ResultState.Loading -> {
+                        // Tampilkan loading indicator
+                    }
+
+                    is ResultState.Success -> {
+                        val message = result.data.message
+                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(requireContext(), ActLogin::class.java))
+                    }
+                    is ResultState.Error -> {
+                        Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            AlertDialog.Builder(requireContext()).apply {
+                setTitle("Keluar")
+                setMessage("Apakah Anda yakin ingin keluar?")
+                setPositiveButton("Ya") { _, _ ->
+                    viewModel.logout()
+                }
+                setNegativeButton("Tidak") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                create()
+                show()
+            }
         }
     }
 }
