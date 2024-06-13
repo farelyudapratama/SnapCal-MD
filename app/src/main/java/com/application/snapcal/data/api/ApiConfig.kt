@@ -1,5 +1,6 @@
 package com.application.snapcal.data.api
 
+import android.util.Log
 import com.application.snapcal.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -24,8 +25,10 @@ class ApiConfig {
 
     companion object {
         private const val BASE_URL = "https://snapcal-backend.et.r.appspot.com/"
-        internal var token = ""
+        private var token = ""
         fun getApiService(token: String): ApiService{
+            this.token = token
+            Log.d("tokenAPI", token)
             val loggingInterceptor =
                 HttpLoggingInterceptor().setLevel(
                     if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
@@ -36,7 +39,7 @@ class ApiConfig {
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "Bearer ${this.token}")
+                    .addHeader("Authorization", this.token)
                     .build()
                 chain.proceed(requestHeaders)
             }

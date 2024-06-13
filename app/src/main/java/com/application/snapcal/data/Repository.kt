@@ -1,19 +1,20 @@
 package com.application.snapcal.data
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.application.snapcal.data.api.ApiConfig
 import com.application.snapcal.data.api.ApiService
 import com.application.snapcal.data.pref.UserModel
 import com.application.snapcal.data.pref.UserPreference
-import com.application.snapcal.data.response.ApiResponse
 import com.application.snapcal.data.response.LoginRequest
 import com.application.snapcal.data.response.LoginResponse
 import com.application.snapcal.data.response.RegisterRequest
 import com.application.snapcal.data.response.RegisterResponse
-import com.google.gson.Gson
-import kotlinx.coroutines.Dispatchers
+import com.application.snapcal.data.response.ResponseProfile
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
+import java.io.File
 
 class Repository private constructor(
     private val apiService: ApiService,
@@ -24,7 +25,6 @@ class Repository private constructor(
 
     suspend fun logout() = userPreference.logout()
 
-    // Belum bener ke api
     suspend fun login(email: String, password: String): ResultState<LoginResponse>{
         ResultState.Loading
         return try {
@@ -64,6 +64,41 @@ class Repository private constructor(
 //        }
 //    }
 
+    suspend fun getProfileDetails()= liveData{
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getProfileDetails()
+            emit(ResultState.Success(response))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.toString()))
+        }
+    }
+
+    suspend fun updateProfile(userProfile: ResponseProfile): ResultState<ResponseProfile>{
+        ResultState.Loading
+        return try {
+            val response = apiService.updateProfileDetails(userProfile)
+            ResultState.Success(response)
+        } catch (e: HttpException){
+            ResultState.Error(e.toString())
+        }
+    }
+
+    fun uploadImage(imageFile: File) = liveData {
+        emit(ResultState.Loading)
+        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+        val multipartBody = MultipartBody.Part.createFormData(
+            "photo",
+            imageFile.name,
+            requestImageFile
+        )
+        try {
+            val response = apiService.uploadProfilePhoto(multipartBody)
+            emit(ResultState.Success(response))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.toString()))
+        }
+    }
 
     companion object {
         @Volatile

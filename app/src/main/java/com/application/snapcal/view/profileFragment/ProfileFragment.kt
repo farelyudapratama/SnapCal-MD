@@ -9,14 +9,17 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.application.snapcal.R
+import com.application.snapcal.data.ResultState
 import com.application.snapcal.databinding.FragmentProfileBinding
-import com.application.snapcal.view.EditProfileActivity
 import com.application.snapcal.view.GantiKataSandiActivity
 import com.application.snapcal.view.ViewModelFactory
+import com.application.snapcal.view.editProfile.EditProfileActivity
 import com.application.snapcal.view.login.ActLogin
+import com.bumptech.glide.Glide
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -29,6 +32,27 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentProfileBinding.bind(view)
 
+        viewModel.profileItem.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is ResultState.Loading -> {
+                    // Tampilkan loading indicator
+                }
+                is ResultState.Success -> {
+                    _binding.apply {
+                        Glide
+                            .with(requireContext())
+                            .load(result.data.data?.gambarProfil)
+                            .into(ivAvatar)
+                        tvName.text = result.data.data?.name
+                        tvEmail.text = result.data.data?.email
+                    }
+                }
+                is ResultState.Error -> {
+                    // Tampilkan pesan error
+                    Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
         setupAction()
     }
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.application.snapcal.data.Repository
 import com.application.snapcal.di.Injection
+import com.application.snapcal.view.editProfile.EditProfileViewModel
 import com.application.snapcal.view.login.LoginViewModel
 import com.application.snapcal.view.main.MainViewModel
 import com.application.snapcal.view.profileFragment.ProfileViewModel
@@ -30,6 +31,9 @@ class ViewModelFactory(private val repository: Repository) :
                 }
                 modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                     ProfileViewModel(repository) as T
+                }
+                modelClass.isAssignableFrom(EditProfileViewModel::class.java) -> {
+                    EditProfileViewModel(repository) as T
                 }
                 else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
             }
