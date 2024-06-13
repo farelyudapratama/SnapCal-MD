@@ -109,6 +109,7 @@ class EditProfileActivity : AppCompatActivity() {
                     .load(uri)
                     .into(binding.ivAvatar)
             }
+            Log.d("Image URI", "Selected image URI: $imageUri")
         }
 
         binding.fabEdit.setOnClickListener {
@@ -133,27 +134,28 @@ class EditProfileActivity : AppCompatActivity() {
 //        val finalImage = if (uri != null) uriToFile(uri!!, this).reduceFileImage() else currentImageUri
 
         if (uri != null) {
-            currentImageUri?.let { uri ->
-                if (uri.scheme == "http" || uri.scheme == "https") {
-                    downloadImageFromUrl(uri.toString()) { file ->
-                        file?.let {
-                            val reducedFile = it.reduceFileImage()
-                            viewModel.uploadProfilePhoto(reducedFile)
-                        } ?: run {
-                            Log.e("EditProfileActivity", "Error downloading image from URL")
-                            Toast.makeText(this, "Failed to download image", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                } else {
-                    try {
-                        val file = uriToFile(uri, this)
-                        val reducedFile = file.reduceFileImage()
+            Log.d("Image URI", "Selected image URI: $uri")
+            if (uri!!.scheme == "http" || uri!!.scheme == "https") {
+                downloadImageFromUrl(uri.toString()) { file ->
+                    Log.d("Image URI", "Downloaded image file: $file")
+                    file?.let {
+                        val reducedFile = it.reduceFileImage()
                         viewModel.uploadProfilePhoto(reducedFile)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                        Log.e("EditProfileActivity", "Error uploading profile photo: ${e.message}")
-                        Toast.makeText(this, "Failed to process image", Toast.LENGTH_SHORT).show()
+                    } ?: run {
+                        Log.e("EditProfileActivity", "Error downloading image from URL")
+                        Toast.makeText(this, "Failed to download image", Toast.LENGTH_SHORT).show()
                     }
+                }
+            } else {
+                try {
+                    Log.d("Image URI", "Selected image URI: $uri")
+                    val file = uriToFile(uri!!, this)
+                    val reducedFile = file.reduceFileImage()
+                    viewModel.uploadProfilePhoto(reducedFile)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Log.e("EditProfileActivity", "Error uploading profile photo: ${e.message}")
+                    Toast.makeText(this, "Failed to process image", Toast.LENGTH_SHORT).show()
                 }
             }
             viewModel.saveProfileChanges(

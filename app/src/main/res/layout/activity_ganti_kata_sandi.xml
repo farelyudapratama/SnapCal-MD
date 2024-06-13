@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".view.GantiKataSandiActivity">
+    tools:context=".view.gantiKataSandi.GantiKataSandiActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,33 +43,33 @@
                     android:textColor="@color/navy_blue"
                     android:textSize="14sp" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:ellipsize="end"
-                    android:inputType="textPassword"
-                    android:scrollHorizontally="true"
-                    android:singleLine="true"
-                    android:textColorHint="@color/navy_blue"
-                    app:boxBackgroundMode="none"
-                    app:endIconMode="password_toggle"
-                    app:endIconTint="@color/navy_blue"
-                    app:hintTextColor="#292222">
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="50dp"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:scrollHorizontally="true"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:textColorHint="@color/navy_blue"-->
+<!--                    app:boxBackgroundMode="none"-->
+<!--                    app:endIconMode="password_toggle"-->
+<!--                    app:endIconTint="@color/navy_blue"-->
+<!--                    app:hintTextColor="#292222">-->
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/current_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:hint="Kata Sandi Saat Ini"
-                        android:inputType="textPassword"
-                        android:outlineProvider="none"
-                        android:scrollHorizontally="true"
-                        android:singleLine="true"
-                        android:textColor="@color/navy_blue" />
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/current_password"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:ellipsize="end"-->
+<!--                        android:hint="Kata Sandi Saat Ini"-->
+<!--                        android:inputType="textPassword"-->
+<!--                        android:outlineProvider="none"-->
+<!--                        android:scrollHorizontally="true"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:textColor="@color/navy_blue" />-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <View
                     android:layout_width="match_parent"
