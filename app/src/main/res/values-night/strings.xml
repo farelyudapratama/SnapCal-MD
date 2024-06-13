@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gagal_memunculkan_kamera">Gagal memunculkan kamera.</string>
+    <string name="gagal_mengambil_gambar">Gagal mengambil gambar.</string>
+    <string name="permission_request_granted">Permission request granted</string>
+</resources>

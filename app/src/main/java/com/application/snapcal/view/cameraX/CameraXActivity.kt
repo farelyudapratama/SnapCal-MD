@@ -1,13 +1,11 @@
 package com.application.snapcal.view.cameraX
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraControl
@@ -17,8 +15,6 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.application.snapcal.R
 import com.application.snapcal.databinding.ActivityCameraXactivityBinding
 
@@ -40,7 +36,8 @@ class CameraXActivity : AppCompatActivity() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,
+                    getString(R.string.permission_request_granted), Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
                 finish()
@@ -101,7 +98,7 @@ class CameraXActivity : AppCompatActivity() {
             } catch (exc: Exception) {
                 Toast.makeText(
                     this@CameraXActivity,
-                    "Gagal memunculkan kamera.",
+                    getString(R.string.gagal_memunculkan_kamera),
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.e(TAG, "startCamera: ${exc.message}")
@@ -130,7 +127,7 @@ class CameraXActivity : AppCompatActivity() {
                 override fun onError(exc: ImageCaptureException) {
                     Toast.makeText(
                         this@CameraXActivity,
-                        "Gagal mengambil gambar.",
+                        getString(R.string.gagal_mengambil_gambar),
                         Toast.LENGTH_SHORT
                     ).show()
                     Log.e(TAG, "onError: ${exc.message}")

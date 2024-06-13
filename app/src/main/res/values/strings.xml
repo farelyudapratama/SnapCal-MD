@@ -16,6 +16,9 @@
     <string name="desc_below_text">Belum Memiliki Akun?</string>
     <string name="email_autofill_text">Email*</string>
     <string name="sub_viewcard_text">Masuk</string>
+    <string name="gagal_memunculkan_kamera">Gagal memunculkan kamera.</string>
+    <string name="gagal_mengambil_gambar">Gagal mengambil gambar.</string>
+    <string name="permission_request_granted">Permission request granted</string>
     <string-array name="gender_array">
         <item>Laki - Laki</item>
         <item>Perempuan</item>

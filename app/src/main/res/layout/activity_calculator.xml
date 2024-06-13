@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".view.main.CalculatorActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="510dp"
         android:layout_margin="8dp"
-        android:padding="16dp"
+        android:padding="36dp"
         app:cardBackgroundColor="@color/lavender_blue"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
@@ -24,12 +25,12 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <!-- Perhitungan Kalori/100gr -->
+            <!-- Tinggi Badan -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="Perhitungan Kalori/100gr"
+                android:paddingBottom="16dp"
+                android:text="Tinggi Badan (cm)"
                 android:textColor="@color/navy_blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -41,21 +42,23 @@
                 android:textColorHint="#8A8A8A">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_tinggi_badan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="Masukkan kalori per 100gr"
+                    android:hint="Masukkan tinggi badan*"
                     android:inputType="numberDecimal"
-                    android:textColor="@color/navy_blue" />
+                    android:textColor="@color/navy_blue"
+                    android:gravity="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Berat Makanan -->
+            <!-- Berat Badan -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="Berat Makanan (gr)"
+                android:paddingBottom="16dp"
+                android:text="Berat Badan (kg)"
                 android:textColor="@color/navy_blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -67,49 +70,38 @@
                 android:textColorHint="#8A8A8A">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_berat_badan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="Masukkan berat makanan"
+                    android:hint="Masukkan berat badan*"
                     android:inputType="numberDecimal"
-                    android:textColor="@color/navy_blue" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Total Kalori -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="Total Kalori"
-                android:textColor="@color/navy_blue"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:textColorHint="#8A8A8A">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:enabled="false"
-                    android:hint="Total kalori akan muncul di sini"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/navy_blue" />
+                    android:textColor="@color/navy_blue"
+                    android:gravity="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Button -->
             <Button
+                android:id="@+id/btn_hitung_bmi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/golden_yellow"
-                android:text="Hitung Kalori"
+                android:text="Hitung BMI"
+                android:textStyle="bold"
                 android:textColor="@color/navy_blue" />
+
+            <!-- Hasil BMI -->
+            <TextView
+                android:id="@+id/tv_hasil_bmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:text="RESULT"
+                android:textColor="@color/navy_blue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAlignment="center" />
 
         </LinearLayout>
 
