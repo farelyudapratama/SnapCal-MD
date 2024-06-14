@@ -10,6 +10,7 @@ import com.application.snapcal.data.response.ResetPassResponse
 import com.application.snapcal.data.response.ResponseProfile
 import com.application.snapcal.data.response.UploadResponse
 import okhttp3.MultipartBody
+import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -38,7 +39,10 @@ interface ApiService {
 
     @Multipart
     @POST("user/profile-details/upload-photo")
-    suspend fun uploadProfilePhoto( @Part("photo") file: MultipartBody.Part ): UploadResponse
+    fun uploadProfilePhoto(
+//        @Header("Authorization") token: String,
+        @Part photo: MultipartBody.Part
+    ): Call<UploadResponse>
 
     @PUT("auth/reset-password")
     suspend fun resetPassword(@Body request: ResetPassRequest): ResetPassResponse
