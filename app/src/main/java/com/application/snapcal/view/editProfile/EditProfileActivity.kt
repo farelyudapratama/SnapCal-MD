@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -94,6 +95,7 @@ class EditProfileActivity : AppCompatActivity() {
             when (result) {
                 is ResultState.Loading -> {
                     // Tampilkan loading indicator
+                    showLoading(true)
                 }
                 is ResultState.Success -> {
                     binding.apply {
@@ -121,72 +123,67 @@ class EditProfileActivity : AppCompatActivity() {
                     currentWeight = result.data.data?.beratBadan
                     currentHeight = result.data.data?.tinggiBadan
                     currentAge = result.data.data?.usiaUser
+                    showLoading(false)
                 }
                 is ResultState.Error -> {
+                    showLoading(false)
                     Toast.makeText(this, "Error: ${result.error}", Toast.LENGTH_LONG).show()
                 }
             }
         }
 
-        binding.btnSimpan.setOnClickListener { saveProfileEdit() }
+        binding.btnSimpan.setOnClickListener {
+            AlertDialog.Builder(this).apply {
+                setTitle("Simpan Perubahan")
+                setMessage("Anda yakin ingin menyimpan perubahan?")
+                setPositiveButton("Ya") { _, _ ->
+                    saveProfileEdit()
+                }
+                setNegativeButton("Tidak", null)
+                create()
+                show()
+            }
+        }
 
         binding.btnBatal.setOnClickListener {
             finish()
         }
 
         binding.fabEdit.setOnClickListener {
-//            pickImage.launch("image/*")
 
             if (checkAndRequestPermissions()) {
-                val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                startActivityForResult(intent, PICK_IMAGE_REQUEST)
+                pickImage.launch("image/*")
             }
         }
     }
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let { imageUri ->
             val imageFile = uriToFile(uri, this).reduceFileImage()
-//            val filePath = getRealPathFromURI(imageUri)
-//            Log.d("EditProfileActivity", "File path: $filePath")
-//            if (filePath != null) {
-//                uploadPhoto(filePath)
-//            } else {
-//                Log.e("EditProfileActivity", "File path is null")
-//                Toast.makeText(this, "Failed to get file path", Toast.LENGTH_SHORT).show()
-//            }
 
-            uploadPhoto(imageFile)
+            AlertDialog.Builder(this).apply {
+                setTitle("Upload Photo")
+                setMessage("Anda yakin ingin mengupload foto ini?")
+                setPositiveButton("Ya") { _, _ ->
+                    uploadPhoto(imageFile)
 
-            Glide.with(this)
-                .load(imageUri)
-                .apply(RequestOptions.circleCropTransform())
-                .into(binding.ivAvatar)
-        }
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-            val selectedImageUri: Uri = data.data!!
-
-            val filePath = uriToFile( selectedImageUri, this ).reduceFileImage()
-
-            uploadPhoto(filePath)
-
-            Glide.with(this)
-                .load(selectedImageUri)
-                .apply(RequestOptions.circleCropTransform())
-                .into(binding.ivAvatar)
+                    Glide.with(this@EditProfileActivity)
+                        .load(imageUri)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(binding.ivAvatar)
+                }
+                setNegativeButton("Tidak", null)
+                create()
+                show()
+            }
         }
     }
 
     private fun uploadPhoto(filePath: File) {
-        viewModel.uploadPhoto(filePath).observe(this, Observer { response ->
+        viewModel.uploadPhoto(filePath).observe(this@EditProfileActivity, Observer { response ->
             if (response != null) {
-                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
-                // Do something with the photo URL
+                Toast.makeText(this@EditProfileActivity, "Berhasil Upload Foto", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Upload failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@EditProfileActivity, "Gagal Upload Foto", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -214,5 +211,9 @@ class EditProfileActivity : AppCompatActivity() {
             finalHeight,
             finalAge
         )
+        finish()
+    }
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) android.view.View.VISIBLE else android.view.View.GONE
     }
 }

@@ -43,13 +43,18 @@
                     app:strokeColor="@color/navy_blue"
                     app:strokeWidth="3dp">
 
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:indeterminateTint="@color/tulip" />
+
                     <ImageView
                         android:id="@+id/iv_Avatar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:contentDescription="Photo Profile"
-                        android:scaleType="centerCrop"
-                        tools:src="@tools:sample/backgrounds/scenic" />
+                        android:scaleType="centerCrop" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView

@@ -38,6 +38,7 @@ class ActLogin : AppCompatActivity() {
                 when(result){
                     is ResultState.Loading -> {
                         // Tampilkan loading indicator
+                        showLoading(true)
                     }
                     is ResultState.Success -> {
                         AlertDialog.Builder(this).apply {
@@ -51,8 +52,10 @@ class ActLogin : AppCompatActivity() {
                             create()
                             show()
                         }
+                        showLoading(false)
                     }
                     is ResultState.Error -> {
+                        showLoading(false)
                         Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -62,5 +65,8 @@ class ActLogin : AppCompatActivity() {
             val intent = Intent(this, ActSignUp::class.java)
             startActivity(intent)
         }
+    }
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) android.view.View.VISIBLE else android.view.View.GONE
     }
 }

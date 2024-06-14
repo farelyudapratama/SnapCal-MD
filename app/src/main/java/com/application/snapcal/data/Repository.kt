@@ -120,11 +120,7 @@ class Repository private constructor(
             requestImageFile
         )
 
-//        Log.d("PhotoRepository", "File path: $filePath")
-//        Log.d("PhotoRepository", "File name: ${file.name}")
-//        Log.d("PhotoRepository", "Request body: $body")
         ApiConfig.getApiService(token)
-//        Log.d("PhotoRepository", "Token: $token")
 
         val call: Call<UploadResponse> = apiService.uploadProfilePhoto( multipartBody)
         call.enqueue(object : Callback<UploadResponse> {

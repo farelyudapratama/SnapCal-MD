@@ -117,14 +117,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 when (result) {
                     is ResultState.Loading -> {
                         // Tampilkan loading indicator
+                        showLoading(true)
                     }
 
                     is ResultState.Success -> {
                         val message = result.data.message
                         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                         startActivity(Intent(requireContext(), ActLogin::class.java))
+                        showLoading(false)
                     }
                     is ResultState.Error -> {
+                        showLoading(false)
                         Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -143,5 +146,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 show()
             }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        _binding.progressBar.visibility = if (isLoading) android.view.View.VISIBLE else android.view.View.GONE
     }
 }
