@@ -21,6 +21,13 @@
             android:layout_marginTop="20dp"
             app:cardCornerRadius="70dp">
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminateTint="@color/tulip"
+                android:visibility="gone"/>
+
             <ImageView
                 android:id="@+id/iv_Avatar"
                 android:layout_width="match_parent"

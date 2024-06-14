@@ -1,11 +1,7 @@
 package com.application.snapcal.view.signUp
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +36,7 @@ class ActSignUp : AppCompatActivity() {
             when (result) {
                 is ResultState.Loading -> {
                     // Tampilkan loading indicator
+                    showLoading(true)
                 }
 
                 is ResultState.Success -> {
@@ -49,13 +46,18 @@ class ActSignUp : AppCompatActivity() {
                     val intent = Intent(this, ActLogin::class.java)
                     startActivity(intent)
                     finish()
+                    showLoading(false)
                 }
 
                 is ResultState.Error -> {
+                    showLoading(false)
                     val errorMessage = result.error
                     Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
         }
+    }
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) android.view.View.VISIBLE else android.view.View.GONE
     }
 }

@@ -32,7 +32,6 @@ class EditProfileViewModel(private val repository: Repository) : ViewModel() {
             }
         }
     }
-//    fun uploadProfilePhoto(file: File) = repository.uploadImage(file)
     fun saveProfileChanges(name: String, email: String, gender: String?, weight: Int?, height: Int?, age: Int?) {
         val userProfile = ResponseProfile(
             userId = userId ?: "",
