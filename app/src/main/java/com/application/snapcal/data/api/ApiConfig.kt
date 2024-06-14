@@ -25,7 +25,7 @@ class ApiConfig {
 
     companion object {
         private const val BASE_URL = "https://snapcal-backend.et.r.appspot.com/"
-        private var token = ""
+        var token = ""
         fun getApiService(token: String): ApiService{
             this.token = token
             Log.d("tokenAPI", token)

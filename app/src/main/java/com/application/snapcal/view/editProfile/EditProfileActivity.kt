@@ -1,62 +1,96 @@
 package com.application.snapcal.view.editProfile
 
-import android.R
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
+import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.application.snapcal.data.ResultState
 import com.application.snapcal.databinding.ActivityEditProfilBinding
 import com.application.snapcal.view.CustomSpinnerAdapter
 import com.application.snapcal.view.ViewModelFactory
-import com.application.snapcal.view.cameraX.createCustomTempFile
 import com.application.snapcal.view.cameraX.reduceFileImage
 import com.application.snapcal.view.cameraX.uriToFile
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.io.File
-import java.io.FileOutputStream
-import java.net.URL
-import java.util.concurrent.Executors
 
 class EditProfileActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityEditProfilBinding
-    private val viewModel by viewModels<EditProfileViewModel>(){
+    private lateinit var binding: ActivityEditProfilBinding
+    private val viewModel by viewModels<EditProfileViewModel> {
         ViewModelFactory.getInstance(this)
     }
     private val genderMap = mapOf(
         "Laki-laki" to "male",
         "Perempuan" to "female"
     )
-    private var uri: Uri? = null
+    private val PICK_IMAGE_REQUEST = 1
+    private val REQUEST_PERMISSION = 2
+    private fun checkAndRequestPermissions(): Boolean {
+        val readExternalStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+        val writeExternalStoragePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
+        val listPermissionsNeeded = mutableListOf<String>()
+
+        if (readExternalStoragePermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        if (writeExternalStoragePermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+
+        if (listPermissionsNeeded.isNotEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toTypedArray(), REQUEST_PERMISSION)
+            return false
+        }
+
+        return true
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            REQUEST_PERMISSION -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Izin diberikan, lanjutkan proses
+                    val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    startActivityForResult(intent, PICK_IMAGE_REQUEST)
+                } else {
+                    // Izin ditolak, beri informasi kepada pengguna
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
     private var currentName: String? = null
     private var currentEmail: String? = null
     private var currentGender: String? = null
     private var currentWeight: Int? = null
     private var currentHeight: Int? = null
     private var currentAge: Int? = null
-    private var currentImageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-//        val gender = resources.getStringArray(R.array.gender_array)
         val genderList = genderMap.keys.toList()
 
-        val adapter = CustomSpinnerAdapter(this, R.layout.simple_spinner_item, genderList)
+        val adapter = CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, genderList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerGender.adapter = adapter
 
-        viewModel.profileResult.observe(this){ result ->
+        viewModel.profileResult.observe(this) { result ->
             when (result) {
                 is ResultState.Loading -> {
                     // Tampilkan loading indicator
@@ -70,19 +104,16 @@ class EditProfileActivity : AppCompatActivity() {
                         etAge.setText(result.data.data?.usiaUser?.toString())
 
                         result.data.data?.gambarProfil?.let { imageUrl ->
-                            currentImageUri = Uri.parse(imageUrl)
                             Glide.with(this@EditProfileActivity)
-                                .load(currentImageUri)
+                                .load(imageUrl)
                                 .into(ivAvatar)
                         }
                     }
-                    val genderResponse = genderMap.entries.find { it.value == result.data.data?.gender}?.key
+                    val genderResponse = genderMap.entries.find { it.value == result.data.data?.gender }?.key
                     val genderPosition = genderList.indexOf(genderResponse)
                     if (genderPosition >= 0) {
                         binding.spinnerGender.setSelection(genderPosition)
                     }
-
-                    binding.spinnerGender.setSelection(genderPosition)
 
                     currentName = result.data.data?.name
                     currentEmail = result.data.data?.email
@@ -103,20 +134,61 @@ class EditProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
-            if (imageUri != null) {
-                uri = imageUri
-                Glide.with(this)
-                    .load(uri)
-                    .apply(RequestOptions.circleCropTransform())
-                    .into(binding.ivAvatar)
-            }
-            Log.d("Image URI", "Selected image URI: $imageUri")
-        }
-
         binding.fabEdit.setOnClickListener {
-            pickImage.launch("image/*")
+//            pickImage.launch("image/*")
+
+            if (checkAndRequestPermissions()) {
+                val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                startActivityForResult(intent, PICK_IMAGE_REQUEST)
+            }
         }
+    }
+    private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let { imageUri ->
+            val imageFile = uriToFile(uri, this).reduceFileImage()
+//            val filePath = getRealPathFromURI(imageUri)
+//            Log.d("EditProfileActivity", "File path: $filePath")
+//            if (filePath != null) {
+//                uploadPhoto(filePath)
+//            } else {
+//                Log.e("EditProfileActivity", "File path is null")
+//                Toast.makeText(this, "Failed to get file path", Toast.LENGTH_SHORT).show()
+//            }
+
+            uploadPhoto(imageFile)
+
+            Glide.with(this)
+                .load(imageUri)
+                .apply(RequestOptions.circleCropTransform())
+                .into(binding.ivAvatar)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            val selectedImageUri: Uri = data.data!!
+
+            val filePath = uriToFile( selectedImageUri, this ).reduceFileImage()
+
+            uploadPhoto(filePath)
+
+            Glide.with(this)
+                .load(selectedImageUri)
+                .apply(RequestOptions.circleCropTransform())
+                .into(binding.ivAvatar)
+        }
+    }
+
+    private fun uploadPhoto(filePath: File) {
+        viewModel.uploadPhoto(filePath).observe(this, Observer { response ->
+            if (response != null) {
+                Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+                // Do something with the photo URL
+            } else {
+                Toast.makeText(this, "Upload failed", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun saveProfileEdit() {
@@ -133,73 +205,14 @@ class EditProfileActivity : AppCompatActivity() {
         val finalWeight = weight ?: currentWeight
         val finalHeight = height ?: currentHeight
         val finalAge = age ?: currentAge
-//        val finalImage = if (uri != null) uriToFile(uri!!, this).reduceFileImage() else currentImageUri
 
-        if (uri != null) {
-            Log.d("Image URI", "Selected image URI: $uri")
-            if (uri!!.scheme == "http" || uri!!.scheme == "https") {
-                downloadImageFromUrl(uri.toString()) { file ->
-                    Log.d("Image URI", "Downloaded image file: $file")
-                    file?.let {
-                        val reducedFile = it.reduceFileImage()
-                        viewModel.uploadProfilePhoto(reducedFile)
-                    } ?: run {
-                        Log.e("EditProfileActivity", "Error downloading image from URL")
-                        Toast.makeText(this, "Failed to download image", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            } else {
-                try {
-                    Log.d("Image URI", "Selected image URI: $uri")
-                    val file = uriToFile(uri!!, this)
-                    val reducedFile = file.reduceFileImage()
-                    viewModel.uploadProfilePhoto(reducedFile)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    Log.e("EditProfileActivity", "Error uploading profile photo: ${e.message}")
-                    Toast.makeText(this, "Failed to process image", Toast.LENGTH_SHORT).show()
-                }
-            }
-            viewModel.saveProfileChanges(
-                finalName.toString(),
-                finalEmail.toString(),
-                finalGender,
-                finalWeight,
-                finalHeight,
-                finalAge
-            )
-        } else {
-            viewModel.saveProfileChanges(
-                finalName.toString(),
-                finalEmail.toString(),
-                finalGender,
-                finalWeight,
-                finalHeight,
-                finalAge
-            )
-        }
+        viewModel.saveProfileChanges(
+            finalName.toString(),
+            finalEmail.toString(),
+            finalGender,
+            finalWeight,
+            finalHeight,
+            finalAge
+        )
     }
-    private fun downloadImageFromUrl(url: String, callback: (File?) -> Unit) {
-        val executor = Executors.newSingleThreadExecutor()
-        val handler = Handler(Looper.getMainLooper())
-        executor.execute {
-            try {
-                val inputStream = URL(url).openStream()
-                val tempFile = createCustomTempFile(this)
-                val outputStream = FileOutputStream(tempFile)
-                inputStream.copyTo(outputStream)
-                inputStream.close()
-                outputStream.close()
-                handler.post {
-                    callback(tempFile)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                handler.post {
-                    callback(null)
-                }
-            }
-        }
-    }
-
 }

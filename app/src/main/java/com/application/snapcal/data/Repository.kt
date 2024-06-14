@@ -1,7 +1,11 @@
 package com.application.snapcal.data
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.application.snapcal.data.api.ApiConfig
+import com.application.snapcal.data.api.ApiConfig.Companion.token
 import com.application.snapcal.data.api.ApiService
 import com.application.snapcal.data.pref.UserModel
 import com.application.snapcal.data.pref.UserPreference
@@ -13,10 +17,14 @@ import com.application.snapcal.data.response.RegisterResponse
 import com.application.snapcal.data.response.ResetPassRequest
 import com.application.snapcal.data.response.ResetPassResponse
 import com.application.snapcal.data.response.ResponseProfile
+import com.application.snapcal.data.response.UploadResponse
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.HttpException
+import retrofit2.Response
 import java.io.File
 
 class Repository private constructor(
@@ -87,22 +95,55 @@ class Repository private constructor(
         }
     }
 
-    fun uploadImage(imageFile: File) = liveData {
-        emit(ResultState.Loading)
-        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+//    fun uploadImage(imageFile: File) = liveData {
+//        emit(ResultState.Loading)
+//        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+//        val multipartBody = MultipartBody.Part.createFormData(
+//            "photo",
+//            imageFile.name,
+//            requestImageFile
+//        )
+//        try {
+//            val response = apiService.uploadProfilePhoto(multipartBody)
+//            emit(ResultState.Success(response))
+//        } catch (e: Exception) {
+//            emit(ResultState.Error(e.toString()))
+//        }
+//    }
+    fun uploadPhoto(imageFile: File): LiveData<UploadResponse> {
+        val uploadPhotoResponse = MutableLiveData<UploadResponse>()
+
+        val requestImageFile = imageFile.asRequestBody("image/*".toMediaType())
         val multipartBody = MultipartBody.Part.createFormData(
             "photo",
             imageFile.name,
             requestImageFile
         )
-        try {
-            val response = apiService.uploadProfilePhoto(multipartBody)
-            emit(ResultState.Success(response))
-        } catch (e: Exception) {
-            emit(ResultState.Error(e.toString()))
-        }
-    }
 
+//        Log.d("PhotoRepository", "File path: $filePath")
+//        Log.d("PhotoRepository", "File name: ${file.name}")
+//        Log.d("PhotoRepository", "Request body: $body")
+        ApiConfig.getApiService(token)
+//        Log.d("PhotoRepository", "Token: $token")
+
+        val call: Call<UploadResponse> = apiService.uploadProfilePhoto( multipartBody)
+        call.enqueue(object : Callback<UploadResponse> {
+            override fun onResponse(call: Call<UploadResponse>, response: Response<UploadResponse>) {
+                if (response.isSuccessful) {
+                    uploadPhotoResponse.value = response.body()
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    Log.e("PhotoRepository", "Upload failed with status code ${response.code()}: $errorBody")
+                }
+            }
+
+            override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
+                Log.e("PhotoRepository", "Upload error: ${t.message}")
+            }
+        })
+
+        return uploadPhotoResponse
+    }
     suspend fun resetPassword(newPassword: String): ResultState<ResetPassResponse> {
         return try {
             val request = ResetPassRequest(newPassword)
