@@ -24,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:scaleType="centerCrop"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            tools:src="@tools:sample/backgrounds/scenic"
+            tools:ignore="ContentDescription" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -49,14 +50,15 @@
                 android:layout_height="wrap_content"
                 android:text="Nama Makanan"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/jumlahMakanan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Makanan"
+                android:text="@string/makanan"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -65,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Kalori"
+                android:text="@string/kalori"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -87,7 +89,7 @@
             android:layout_gravity="start"
             android:backgroundTint="#E83B3B"
             android:isScrollContainer="false"
-            android:text="Hapus"
+            android:text="@string/hapus"
             app:icon="@drawable/ic_cancel"
             app:iconGravity="start"
             app:iconSize="25dp"
@@ -100,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:backgroundTint="#21A624"
-            android:text="Simpan"
+            android:text="@string/simpan"
             app:icon="@drawable/ic_check"
             app:iconGravity="start"
             app:iconSize="25dp"

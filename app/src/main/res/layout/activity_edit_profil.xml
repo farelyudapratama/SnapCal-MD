@@ -34,7 +34,8 @@
                 android:layout_height="match_parent"
                 android:contentDescription="Photo Profile"
                 android:scaleType="centerCrop"
-                tools:src="@tools:sample/backgrounds/scenic" />
+                tools:src="@tools:sample/backgrounds/scenic"
+                tools:ignore="HardcodedText" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabEdit"
@@ -45,7 +46,8 @@
                 android:src="@drawable/baseline_edit_24"
                 app:backgroundTint="@color/navy_blue"
                 app:fabCustomSize="50dp"
-                app:tint="@color/white" />
+                app:tint="@color/white"
+                tools:ignore="HardcodedText" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -71,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="Username :"
+                        android:text="@string/username"
                         android:textColor="@color/navy_blue"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -83,11 +85,12 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:background="@drawable/edit_text_background"
-                        android:hint="Username"
+                        android:hint="@string/username_et"
                         android:padding="7dp"
                         android:textColor="@color/navy_blue"
                         android:textColorHint="#8C8C8C"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="Autofill,TextFields" />
                 </LinearLayout>
 
                 <View
@@ -108,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="Email :"
+                        android:text="@string/email"
                         android:textColor="@color/navy_blue"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -121,11 +124,12 @@
                         android:layout_weight="1"
                         android:background="@drawable/edit_text_background"
                         android:enabled="false"
-                        android:hint="Email"
+                        android:hint="@string/email_et"
                         android:padding="7dp"
                         android:textColor="@color/navy_blue"
                         android:textColorHint="#8C8C8C"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="Autofill,TextFields" />
                 </LinearLayout>
 
                 <View
@@ -146,7 +150,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="Jenis Kelamin :"
+                        android:text="@string/jenis_kelamin"
                         android:textColor="@color/navy_blue"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -179,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="Berat Badan :"
+                        android:text="@string/berat_badan"
                         android:textColor="@color/navy_blue"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -191,7 +195,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:background="@drawable/edit_text_background"
-                        android:hint="Berat Badan"
+                        android:hint="@string/berat_badan_et"
                         android:padding="7dp"
                         android:textColor="@color/navy_blue"
                         android:textColorHint="#8C8C8C"
@@ -216,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="Tinggi Badan :"
+                        android:text="@string/tinggi_badan"
                         android:textColor="@color/navy_blue"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -228,11 +232,12 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:background="@drawable/edit_text_background"
-                        android:hint="Tinggi Badan"
+                        android:hint="@string/tinggi_badan_et"
                         android:padding="7dp"
                         android:textColor="@color/navy_blue"
                         android:textColorHint="#8C8C8C"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="Autofill,TextFields" />
                 </LinearLayout>
 
                 <View
@@ -253,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:text="Usia :"
+                        android:text="@string/usia"
                         android:textColor="@color/navy_blue"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -265,7 +270,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:background="@drawable/edit_text_background"
-                        android:hint="Usia"
+                        android:hint="@string/usia_et"
                         android:padding="7dp"
                         android:textColor="@color/navy_blue"
                         android:textColorHint="#8C8C8C"
@@ -300,7 +305,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#E83B3B"
-                android:text="Batal"
+                android:text="@string/batal"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_cancel"
                 app:iconGravity="start"
@@ -314,7 +319,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#21A624"
-                android:text="Simpan"
+                android:text="@string/simpan"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_check"
                 app:iconGravity="start"

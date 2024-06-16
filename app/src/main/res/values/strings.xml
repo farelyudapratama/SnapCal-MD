@@ -7,7 +7,7 @@
     <string name="desc_app">Selamat Datang di SnapCal. Hitung kalori Anda dengan mudah dan cepat untuk hidup lebih sehat.</string>
     <string name="item_title">Item Title</string>
     <string name="motivated_text">Ayo mulai sekarang!</string>
-    <string name="kalkulator_text">Kalkulator Asupan Kalori</string>
+    <string name="kalkulator_text">BMI Kalkulator</string>
     <string name="scan_historytext">Riwayat Scan</string>
     <string name="about_apps">Tentang SnapCal</string>
     <string name="pass_autofill_text">Kata Sandi*</string>
@@ -19,6 +19,38 @@
     <string name="gagal_memunculkan_kamera">Gagal memunculkan kamera.</string>
     <string name="gagal_mengambil_gambar">Gagal mengambil gambar.</string>
     <string name="permission_request_granted">Permission request granted</string>
+    <string name="icon_splash_screen">icon splash screen</string>
+    <string name="makanan">Makanan</string>
+    <string name="kalori">Kalori</string>
+    <string name="hapus">Hapus</string>
+    <string name="simpan">Simpan</string>
+    <string name="perbarui_kata_sandi">Perbarui Kata Sandi</string>
+    <string name="kata_sandi_baru">Kata Sandi Baru</string>
+    <string name="konfirmasi_kata_sandi_baru">Konfirmasi Kata Sandi Baru</string>
+    <string name="batal">Batal</string>
+    <string name="username">Username :</string>
+    <string name="username_et">Username</string>
+    <string name="email">Email :</string>
+    <string name="email_et">Email</string>
+    <string name="jenis_kelamin">Jenis Kelamin :</string>
+    <string name="berat_badan">Berat Badan :</string>
+    <string name="berat_badan_et">Berat Badan</string>
+    <string name="tinggi_badan">Tinggi Badan :</string>
+    <string name="tinggi_badan_et">Tinggi Badan</string>
+    <string name="usia">Usia :</string>
+    <string name="usia_et">Usia</string>
+    <string name="tinggi_badan_cm">Tinggi Badan (cm)</string>
+    <string name="masukkan_tinggi_badan">Masukkan tinggi badan*</string>
+    <string name="berat_badan_kg">Berat Badan (kg)</string>
+    <string name="masukkan_berat_badan">Masukkan berat badan*</string>
+    <string name="hitung_bmi">HITUNG</string>
+    <string name="result">RESULT</string>
+    <string name="pendaftaran_akun">Pendaftaran Akun</string>
+    <string name="pendaftaran">Pendaftaran</string>
+    <string name="kata_sandi_et">Kata Sandi</string>
+    <string name="daftar">DAFTAR</string>
+    <string name="sudah_memiliki_akun">Sudah Memiliki Akun?</string>
+    <string name="masuk">Masuk</string>
     <string-array name="gender_array">
         <item>Laki - Laki</item>
         <item>Perempuan</item>
