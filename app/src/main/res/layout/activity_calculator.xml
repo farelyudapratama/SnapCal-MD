@@ -16,7 +16,7 @@
         android:layout_margin="8dp"
         android:padding="36dp"
         app:cardBackgroundColor="@color/lavender_blue"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="4dp">
 
         <LinearLayout
@@ -25,12 +25,13 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <!-- Tinggi Badan -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:text="Tinggi Badan (cm)"
+                android:paddingBottom="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/tinggi_badan_cm"
                 android:textColor="@color/navy_blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -38,27 +39,30 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
+                android:paddingBottom="20dp"
                 android:textColorHint="#8A8A8A">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_tinggi_badan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:hint="Masukkan tinggi badan*"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/inner_shadow"
+                    android:hint="@string/masukkan_tinggi_badan"
                     android:inputType="numberDecimal"
                     android:textColor="@color/navy_blue"
                     android:gravity="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Berat Badan -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:text="Berat Badan (kg)"
+                android:paddingBottom="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/berat_badan_kg"
                 android:textColor="@color/navy_blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -73,31 +77,32 @@
                     android:id="@+id/et_berat_badan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:hint="Masukkan berat badan*"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/inner_shadow"
+                    android:hint="@string/masukkan_berat_badan"
                     android:inputType="numberDecimal"
                     android:textColor="@color/navy_blue"
                     android:gravity="center" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Button -->
             <Button
                 android:id="@+id/btn_hitung_bmi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/golden_yellow"
-                android:text="Hitung BMI"
+                android:text="@string/hitung_bmi"
                 android:textStyle="bold"
-                android:textColor="@color/navy_blue" />
+                android:textColor="@color/navy_blue"
+                android:elevation="6dp"/>
 
-            <!-- Hasil BMI -->
             <TextView
                 android:id="@+id/tv_hasil_bmi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
-                android:text="RESULT"
+                android:text="@string/result"
                 android:textColor="@color/navy_blue"
                 android:textSize="16sp"
                 android:textStyle="bold"

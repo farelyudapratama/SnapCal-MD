@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:ignore="ScrollViewSize">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -30,7 +31,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Perbarui Kata Sandi"
+                    android:text="@string/perbarui_kata_sandi"
                     android:textColor="@color/navy_blue"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -96,7 +97,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
-                        android:hint="Kata Sandi Baru"
+                        android:hint="@string/kata_sandi_baru"
                         android:inputType="textPassword"
                         android:outlineProvider="none"
                         android:scrollHorizontally="true"
@@ -130,7 +131,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
-                        android:hint="Konfirmasi Kata Sandi Baru"
+                        android:hint="@string/konfirmasi_kata_sandi_baru"
                         android:inputType="textPassword"
                         android:outlineProvider="none"
                         android:scrollHorizontally="true"
@@ -160,7 +161,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#E83B3B"
-                android:text="Batal"
+                android:text="@string/batal"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_cancel"
                 app:iconGravity="start"
@@ -174,7 +175,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#21A624"
-                android:text="Simpan"
+                android:text="@string/simpan"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_check"
                 app:iconGravity="start"

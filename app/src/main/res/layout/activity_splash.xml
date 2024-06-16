@@ -21,7 +21,7 @@
       android:id="@+id/logo"
       android:layout_width="180dp"
       android:layout_height="180dp"
-      android:contentDescription="icon splash screen"
+      android:contentDescription="@string/icon_splash_screen"
       android:src="@mipmap/ic_launcher"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"

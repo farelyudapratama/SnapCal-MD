@@ -54,11 +54,11 @@ class CalculatorActivity : AppCompatActivity() {
 
     private fun getBMICategory(bmi: Float): String {
         return when {
-            bmi < 18.5 -> "Underweight"
-            bmi in 18.5..24.9 -> "Normal weight"
-            bmi in 25.0..29.9 -> "Overweight"
-            bmi >= 30.0 -> "Obesity"
-            else -> "Unknown"
+            bmi < 18.5 -> "Kekurangan berat badan"
+            bmi in 18.5..24.9 -> "Berat badan normal"
+            bmi in 25.0..29.9 -> "Kelebihan berat badan"
+            bmi >= 30.0 -> "Kegemukan"
+            else -> "Tidak diketahui"
         }
     }
 }
