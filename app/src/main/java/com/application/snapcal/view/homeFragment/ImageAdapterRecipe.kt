@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.application.snapcal.R
 import com.bumptech.glide.Glide
 
-class ImageAdapter : ListAdapter<ImageItem,ImageAdapter.ViewHolder>(DiffCallback()){
+class ImageAdapterRecipe : ListAdapter<ImageItem, ImageAdapterRecipe.ViewHolder>(DiffCallback()){
 
     class DiffCallback : DiffUtil.ItemCallback<ImageItem>(){
         override fun areItemsTheSame(oldItem: ImageItem, newItem: ImageItem): Boolean {
