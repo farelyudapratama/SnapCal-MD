@@ -9,123 +9,153 @@
     android:background="@drawable/background_home"
     tools:context=".view.homeFragment.HomeFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:ignore="UselessParent">
-
+        android:layout_height="match_parent">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/greetings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hai, "
-                android:textStyle="bold"
-                android:textSize="24sp"
-                android:textColor="@color/bluish_purple"
-                android:shadowColor="@color/black"
-                android:shadowDx="3"
-                android:shadowDy="4"
-                android:shadowRadius="3"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/tv_usernames"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/black"
-                android:shadowDx="3"
-                android:shadowDy="4"
-                android:shadowRadius="3"
-                android:text="User."
-                android:textColor="@color/bluish_purple"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/greeting_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="@string/desc_app"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/greeting_subdesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="@string/motivated_text"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/calculatorCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:ignore="UselessParent">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:padding="15dp"
-                tools:ignore="UseCompoundDrawables">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/greetings"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="@string/kalkulator_text"
-                    android:textColor="@color/navy_blue"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center_vertical"
-                    android:contentDescription="Icon Kalkulator"
-                    android:src="@drawable/ic_calculator"
+                    android:text="Hai, "
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:textColor="@color/bluish_purple"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="3"
+                    android:shadowDy="4"
+                    android:shadowRadius="3"
                     tools:ignore="HardcodedText" />
 
+                <TextView
+                    android:id="@+id/tv_usernames"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="3"
+                    android:shadowDy="4"
+                    android:shadowRadius="3"
+                    android:text="User."
+                    android:textColor="@color/bluish_purple"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#6A6A6A"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp" />
+            <TextView
+                android:id="@+id/greeting_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/desc_app"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-       <androidx.viewpager2.widget.ViewPager2
-           android:id="@+id/viewPager2"
-           android:layout_width="match_parent"
-           android:layout_height="240dp" />
+            <TextView
+                android:id="@+id/greeting_subdesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/motivated_text"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-        <LinearLayout
-            android:id="@+id/slideDotLL"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/calculatorCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/kalkulator_text"
+                        android:textColor="@color/navy_blue"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:contentDescription="Icon Kalkulator"
+                        android:src="@drawable/ic_calculator"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Promote"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/navy_blue"
+                android:layout_marginVertical="8dp"
+                tools:ignore="HardcodedText" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#6A6A6A"
+                android:layout_marginBottom="16dp" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Healty Food Recipe"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/navy_blue"
+                android:layout_marginVertical="8dp"
+                tools:ignore="HardcodedText" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#6A6A6A"
+                android:layout_marginBottom="16dp" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginBottom="70dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 </FrameLayout>
