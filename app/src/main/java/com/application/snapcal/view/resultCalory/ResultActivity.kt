@@ -1,5 +1,6 @@
 package com.application.snapcal.view.resultCalory
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.application.snapcal.R
 import com.application.snapcal.databinding.ActivityResultBinding
+import com.application.snapcal.view.makananSehat.MakananSehatActivity
 import com.bumptech.glide.Glide
 
 class ResultActivity : AppCompatActivity() {
@@ -31,6 +33,10 @@ class ResultActivity : AppCompatActivity() {
 
         binding.jumlahMakanan.text = label
         binding.jumlahKalori.text = caloriesString
+
+        binding.buttonCek.setOnClickListener {
+            startActivity(Intent(this, MakananSehatActivity::class.java))
+        }
     }
 
     companion object {

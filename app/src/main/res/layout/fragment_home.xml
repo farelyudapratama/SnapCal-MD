@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:padding="16dp"
     android:background="@drawable/background_home"
-    tools:context=".view.HomeFragment">
+    tools:context=".view.homeFragment.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,27 +108,24 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/scanHistoryTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:text="@string/scan_historytext"
-            android:textColor="@color/navy_blue"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#6A6A6A"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+       <androidx.viewpager2.widget.ViewPager2
+           android:id="@+id/viewPager2"
+           android:layout_width="match_parent"
+           android:layout_height="240dp" />
+
+        <LinearLayout
+            android:id="@+id/slideDotLL"
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp" />
+            android:orientation="horizontal" />
 
     </LinearLayout>
 </FrameLayout>

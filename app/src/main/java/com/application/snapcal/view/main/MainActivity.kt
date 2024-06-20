@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.application.snapcal.R
 import com.application.snapcal.databinding.ActivityMainBinding
-import com.application.snapcal.view.HomeFragment
+import com.application.snapcal.view.homeFragment.HomeFragment
 import com.application.snapcal.view.ViewModelFactory
 import com.application.snapcal.view.cameraX.CameraXActivity
 import com.application.snapcal.view.profileFragment.ProfileFragment
