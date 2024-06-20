@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">SnapCal</string>
     <string name="profile">Akun\n</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="perbarui_kata_sandi_explaine">Perbarui kata sandi akun Anda untuk menjaga keamanan dan akses yang aman. Masukkan kata sandi baru yang kuat, dan konfirmasikan kata sandi baru Anda. Tekan <b>\"Simpan\"</b> untuk menyelesaikan proses.</string>
     <string name="desc_app">Selamat Datang di SnapCal. Hitung kalori Anda dengan mudah dan cepat untuk hidup lebih sehat.</string>
@@ -51,6 +50,7 @@
     <string name="daftar">DAFTAR</string>
     <string name="sudah_memiliki_akun">Sudah Memiliki Akun?</string>
     <string name="masuk">Masuk</string>
+    <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
     <string-array name="gender_array">
         <item>Laki - Laki</item>
         <item>Perempuan</item>
