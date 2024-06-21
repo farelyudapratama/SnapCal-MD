@@ -34,9 +34,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewPager2 = _binding.viewPager2
 
         val imagePromote = arrayListOf(
-            ImageItem(UUID.randomUUID().toString(), "android.resource://" + requireContext().packageName + "/" + R.drawable.promote1),
-            ImageItem(UUID.randomUUID().toString(), "android.resource://" + requireContext().packageName + "/" + R.drawable.promote2),
-            ImageItem(UUID.randomUUID().toString(), "android.resource://" + requireContext().packageName + "/" + R.drawable.promote3)
+            ImageItem(UUID.randomUUID().toString(), "android.resource://" + requireContext().packageName + "/" + R.drawable.banner_info1),
+            ImageItem(UUID.randomUUID().toString(), "android.resource://" + requireContext().packageName + "/" + R.drawable.banner_info2),
+            ImageItem(UUID.randomUUID().toString(), "android.resource://" + requireContext().packageName + "/" + R.drawable.banner_info3)
         )
 
         val imageRecipe = arrayListOf(
