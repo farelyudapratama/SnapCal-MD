@@ -24,7 +24,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:background="@drawable/background_profile"
+                    android:background="@drawable/rectangle_profile"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -54,9 +54,8 @@
                         android:id="@+id/iv_Avatar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:contentDescription="Photo Profile"
-                        android:scaleType="centerCrop"
-                        tools:ignore="HardcodedText" />
+                        android:contentDescription="@string/photo_profile_desc"
+                        android:scaleType="centerCrop" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
@@ -111,11 +110,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Akun"
+                            android:text="@string/akun_tv"
                             android:textColor="@color/navy_blue"
                             android:textSize="25sp"
-                            android:textStyle="bold"
-                            tools:ignore="HardcodedText" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tv_EditAkun"
@@ -123,12 +121,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:drawablePadding="10dp"
-                            android:text="Edit Akun"
+                            android:text="@string/edit_akun"
                             android:textColor="@color/navy_blue"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:drawableStartCompat="@drawable/ic_home"
-                            tools:ignore="HardcodedText" />
+                            app:drawableStartCompat="@drawable/ic_home" />
 
                         <TextView
                             android:id="@+id/tv_GantiKataSandi"
@@ -136,12 +133,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:drawablePadding="10dp"
-                            android:text="Ganti Kata Sandi"
+                            android:text="@string/ganti_kata_sandi_tv"
                             android:textColor="@color/navy_blue"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:drawableStartCompat="@drawable/baseline_edit_24"
-                            tools:ignore="HardcodedText" />
+                            app:drawableStartCompat="@drawable/baseline_edit_24" />
 
                         <TextView
                             android:id="@+id/tv_HapusAkun"
@@ -149,12 +145,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:drawablePadding="10dp"
-                            android:text="Hapus Akun"
+                            android:text="@string/hapus_akun_tv"
                             android:textColor="@color/navy_blue"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:drawableStartCompat="@drawable/user_delete"
-                            tools:ignore="HardcodedText" />
+                            app:drawableStartCompat="@drawable/user_delete" />
 
                         <TextView
                             android:id="@+id/tv_TentangAplikasi"
@@ -162,12 +157,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:drawablePadding="10dp"
-                            android:text="Tentang Apilkasi"
+                            android:text="@string/tentang_apilkasi_tv"
                             android:textColor="@color/navy_blue"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:drawableStartCompat="@drawable/baseline_info_24"
-                            tools:ignore="HardcodedText" />
+                            app:drawableStartCompat="@drawable/baseline_info_24" />
 
                         <Button
                             android:id="@+id/btn_Keluar"
@@ -175,7 +169,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/tulip"
-                            android:text="Keluar"
+                            android:text="@string/keluar_akun_tv"
                             android:textColor="@color/navy_blue"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -183,8 +177,7 @@
                             app:icon="@drawable/icon__exit"
                             app:iconGravity="textStart"
                             app:iconSize="30dp"
-                            app:iconTint="@color/navy_blue"
-                            tools:ignore="HardcodedText" />
+                            app:iconTint="@color/navy_blue" />
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>

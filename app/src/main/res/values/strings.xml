@@ -51,6 +51,27 @@
     <string name="sudah_memiliki_akun">Sudah Memiliki Akun?</string>
     <string name="masuk">Masuk</string>
     <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+    <string name="masuk_aplikasi">Masuk Aplikasi</string>
+    <string name="scan_desc">Scan</string>
+    <string name="gallery_desc">Gallery</string>
+    <string name="flashlight_desc">Flashlight</string>
+    <string name="rotate_camera_desc">Rotate Camera</string>
+    <string name="photo_profile_desc">Photo Profile</string>
+    <string name="edit_photo">Edit</string>
+    <string name="food_images_desc">Food Images</string>
+    <string name="nama_makanan">Nama Makanan</string>
+    <string name="cek_list_makanan_sehat">Cek List Makanan Sehat</string>
+    <string name="akun_tv">Akun</string>
+    <string name="edit_akun">Edit Akun</string>
+    <string name="ganti_kata_sandi_tv">Ganti Kata Sandi</string>
+    <string name="hapus_akun_tv">Hapus Akun</string>
+    <string name="tentang_apilkasi_tv">Tentang Apilkasi</string>
+    <string name="keluar_akun_tv">Keluar</string>
+    <string name="icon_kalkulator">Icon Kalkulator</string>
+    <string name="food_name_tv">Food Name</string>
+    <string name="calorie_foods_tv">Calories:</string>
+    <string name="protein_foods_tv">Protein:</string>
+    <string name="sugar_foods_tv">Sugar:</string>
     <string-array name="gender_array">
         <item>Laki - Laki</item>
         <item>Perempuan</item>
