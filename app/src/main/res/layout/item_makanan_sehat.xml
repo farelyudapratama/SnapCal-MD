@@ -27,6 +27,7 @@
                 android:id="@+id/foodImage"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:contentDescription="@string/food_images_desc"
                 android:scaleType="centerCrop" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -34,7 +35,7 @@
             android:id="@+id/foodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Name"
+            android:text="@string/food_name_tv"
             android:layout_gravity="center_horizontal"
             android:textSize="18sp" />
 
@@ -43,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:text="Calories: "
+            android:text="@string/calorie_foods_tv"
             android:textSize="14sp" />
 
         <TextView
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:text="Protein: "
+            android:text="@string/protein_foods_tv"
             android:textSize="14sp" />
 
         <TextView
@@ -59,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:text="Sugar: "
+            android:text="@string/sugar_foods_tv"
             android:textSize="14sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

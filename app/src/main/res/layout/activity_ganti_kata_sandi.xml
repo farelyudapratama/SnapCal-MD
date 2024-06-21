@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/img_bg_edit_kata_sandi"
     tools:context=".view.gantiKataSandi.GantiKataSandiActivity">
 
     <LinearLayout
@@ -42,6 +42,7 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/perbarui_kata_sandi_explaine"
                     android:textColor="@color/navy_blue"
+                    android:layout_marginBottom="12dp"
                     android:textSize="14sp" />
 
 <!--                <com.google.android.material.textfield.TextInputLayout-->
@@ -72,12 +73,12 @@
 
 <!--                </com.google.android.material.textfield.TextInputLayout>-->
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="#6A6A6A"
-                    android:minHeight="2dp" />
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="16dp"-->
+<!--                    android:background="#6A6A6A"-->
+<!--                    android:minHeight="2dp" />-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -94,7 +95,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/new_password"
-                        android:layout_width="match_parent"
+                        android:layout_width="356dp"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:hint="@string/kata_sandi_baru"
@@ -107,7 +108,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View
-                    android:layout_width="match_parent"
+                    android:layout_width="356dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="#6A6A6A"
@@ -128,7 +129,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/new_password_confirm"
-                        android:layout_width="match_parent"
+                        android:layout_width="356dp"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:hint="@string/konfirmasi_kata_sandi_baru"
@@ -141,7 +142,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View
-                    android:layout_width="match_parent"
+                    android:layout_width="356dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="#6A6A6A"

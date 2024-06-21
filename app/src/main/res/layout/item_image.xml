@@ -13,8 +13,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:scaleType="centerCrop"
-        android:contentDescription="Icon Kalkulator"
-        android:src="@drawable/ic_calculator"
-        tools:ignore="HardcodedText" />
+        android:contentDescription="@string/icon_kalkulator"
+        android:src="@drawable/ic_calculator" />
 
 </androidx.cardview.widget.CardView>

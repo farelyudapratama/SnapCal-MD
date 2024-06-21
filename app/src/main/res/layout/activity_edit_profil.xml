@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/img_bg_edit_profile"
     tools:context=".view.editProfile.EditProfileActivity">
 
     <LinearLayout
@@ -32,22 +32,20 @@
                 android:id="@+id/iv_Avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="Photo Profile"
+                android:contentDescription="@string/photo_profile_desc"
                 android:scaleType="centerCrop"
-                tools:src="@tools:sample/backgrounds/scenic"
-                tools:ignore="HardcodedText" />
+                tools:src="@tools:sample/backgrounds/scenic" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabEdit"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
-                android:contentDescription="Edit"
+                android:contentDescription="@string/edit_photo"
                 android:src="@drawable/baseline_edit_24"
                 app:backgroundTint="@color/navy_blue"
                 app:fabCustomSize="50dp"
-                app:tint="@color/white"
-                tools:ignore="HardcodedText" />
+                app:tint="@color/white" />
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -199,7 +197,8 @@
                         android:padding="7dp"
                         android:textColor="@color/navy_blue"
                         android:textColorHint="#8C8C8C"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="Autofill,TextFields" />
                 </LinearLayout>
 
                 <View
@@ -274,7 +273,8 @@
                         android:padding="7dp"
                         android:textColor="@color/navy_blue"
                         android:textColorHint="#8C8C8C"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="Autofill,TextFields" />
                 </LinearLayout>
 
                 <View
